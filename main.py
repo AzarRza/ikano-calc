@@ -1,15 +1,25 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from calculations.fibonacci import fibonacci
 from calculations.factorial import factorial
 from calculations.loan import loan_repayment
 app = FastAPI()
 @app.get("/fibonacci")
 def fibonacci_endpoint(n: int):
-    return {"result": fibonacci(n)}
+    try:
+        return {"result": fibonacci(n)}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 @app.get("/factorial")
 def factorial_endpoint(n: int):
-    return {"result": factorial(n)}
+    try:
+        return {"result": factorial(n)}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 @app.get("/loan")
 def loan_endpoint(principal: float, annual_rate: float, months: int):
-    return {"result": loan_repayment(principal,annual_rate,months)}
+    try:
+        return {"result": loan_repayment(principal,annual_rate,months)}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
 
