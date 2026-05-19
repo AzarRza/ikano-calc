@@ -49,3 +49,8 @@ docker run -p 8000:8000 ikano-calc
 - Principal and months must be positive numbers
 - Annual rate cannot be negative (zero is allowed for interest-free loans)
 - No authentication or rate limiting implemented
+## Assumptions
+- Annual rate is provided as a percentage (e.g. 6 for 6%, not 0.06)
+- Months must be a whole number, partial months are not supported
+- Fibonacci sequence starts at position 0
+- The loan calculator works with whatever numbers you give it, no currency conversion is done
