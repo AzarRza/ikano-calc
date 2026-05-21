@@ -24,8 +24,8 @@ def test_factorial():
         raise AssertionError("Should have raised ValueError")
 
 def test_loan_repayment():
-    assert loan_repayment(100000, 6, 12) == 8606.64
-    assert loan_repayment(12000, 0, 12) == 1000.0
+    assert loan_repayment(100000, 6, 12)["monthly_payment"] == 8606.64
+    assert loan_repayment(12000, 0, 12)["monthly_payment"] == 1000.0          
     try:
         loan_repayment(-1000, 6, 12)
     except ValueError:
