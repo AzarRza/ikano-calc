@@ -25,7 +25,7 @@ def loan_endpoint(
     months: int = Query(description="Loan duration in whole months, must be greater than zero")
 ):
     try:
-        return {"result": loan_repayment(principal, annual_rate, months)}
+       return loan_repayment(principal, annual_rate, months)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
