@@ -1,8 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from calculations.fibonacci import fibonacci
 from calculations.factorial import factorial
 from calculations.loan import loan_repayment
 app = FastAPI()
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 @app.get("/fibonacci")
 def fibonacci_endpoint(n: int):
     try:
