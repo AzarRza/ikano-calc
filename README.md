@@ -54,3 +54,17 @@ docker run -p 8000:8000 ikano-calc
 - Months must be a whole number, partial months are not supported
 - Fibonacci sequence starts at position 0
 - The loan calculator works with whatever numbers you give it, no currency conversion is done
+
+## API endpoints
+
+1) GET /health
+Confirms the service is running.
+
+2) GET /fibonacci?n=5
+Returns the nth Fibonacci number.
+
+3) GET /factorial?n=5
+Returns n factorial.
+
+4) GET /loan?principal=100000&annual_rate=6&months=12
+Returns monthly repayment, total paid, total interest, and a full month-by-month amortization schedule.
