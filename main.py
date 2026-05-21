@@ -13,15 +13,19 @@ def fibonacci_endpoint(n: int = Query(description="Position in the Fibonacci seq
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 @app.get("/factorial")
-def factorial_endpoint(n: int):
+def factorial_endpoint(n: int = Query(description="The number to calculate factorial for, must be a positive whole number")):
     try:
         return {"result": factorial(n)}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 @app.get("/loan")
-def loan_endpoint(principal: float, annual_rate: float, months: int):
+def loan_endpoint(
+    principal: float = Query(description="Loan amount, must be greater than zero"),
+    annual_rate: float = Query(description="Annual interest rate as a percentage, e.g. 6 for 6%"),
+    months: int = Query(description="Loan duration in whole months, must be greater than zero")
+):
     try:
-        return {"result": loan_repayment(principal,annual_rate,months)}
+        return {"result": loan_repayment(principal, annual_rate, months)}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
