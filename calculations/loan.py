@@ -6,8 +6,11 @@ def loan_repayment(principal, annual_rate, months):
   if not isinstance(months,int) or months<=0:
     raise ValueError("Invalid input: months must be a whole number")
   if annual_rate==0:
-    return round(principal/months,2)
+    monthly = round(principal / months, 2)
+    return {"monthly_payment": monthly, "total_paid": principal, "total_interest": 0.0}
   r=(annual_rate/100)/12
   a=(1+r)**months
   M=principal*(r*a)/(a-1)
-  return round(M,2)
+  total_paid = round(M * months, 2)
+  total_interest = round(total_paid - principal, 2)
+  return {"monthly_payment": round(M, 2), "total_paid": total_paid, "total_interest": total_interest}
