@@ -25,8 +25,4 @@ def loan_repayment(principal, annual_rate, months):
     principal_paid = round(M - interest, 2)
     balance = round(balance - principal_paid, 2)
     schedule.append({"month": i, "payment": M, "principal": principal_paid, "interest": interest, "balance": balance})
-<<<<<<< HEAD
   return {"monthly_payment": M, "total_paid": total_paid, "total_interest": total_interest, "schedule": schedule}
-=======
-  return {"monthly_payment": M, "total_paid": total_paid, "total_interest": total_interest, "schedule": schedule}
->>>>>>> af62221b83f13a552411ecf94cbabe08da63c66c
