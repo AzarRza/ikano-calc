@@ -7,7 +7,7 @@ app = FastAPI()
 def health():
     return {"status": "ok"}
 @app.get("/fibonacci")
-def fibonacci_endpoint(n: int):
+def fibonacci_endpoint(n: int = Query(description="Position in the Fibonacci sequence, must be a positive whole number")):
     try:
         return {"result": fibonacci(n)}
     except ValueError as e:
